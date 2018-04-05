@@ -1,5 +1,5 @@
 var camera, scene, renderer;
-var triangle, geometry, material, mesh;
+var geometry, material, mesh;
 
 init();
 animate();
@@ -14,19 +14,32 @@ function init() {
 
   scene = new THREE.Scene();
 
-  triangle = new THREE.Shape( [
-      new THREE.Vector2(   0, 100 ),
-      new THREE.Vector2( 100, 100 ),
-      new THREE.Vector2( 100,   0 )
-  ] );
-  geometry = new THREE.ExtrudeGeometry( triangle, {
-    bevelEnabled: false,
-    amount: 30
-  } );
+  // pyramid
+  geometry = new THREE.Geometry();
+  geometry.vertices = [
+      new THREE.Vector3(   0,   0, 100 ),
+      new THREE.Vector3(  50,  50,   0 ),
+      new THREE.Vector3(  50, -50,   0 ),
+      new THREE.Vector3( -50, -50,   0 ),
+      new THREE.Vector3( -50,  50,   0 )
+  ];
+  geometry.faces.push(
+      new THREE.Face3( 0, 1, 2 ),
+      new THREE.Face3( 0, 2, 3 ),
+      new THREE.Face3( 0, 3, 4 ),
+      new THREE.Face3( 0, 4, 1 ),
+
+      new THREE.Face3( 1, 2, 3 ),
+      new THREE.Face3( 3, 4, 1 )
+  );
+  geometry.computeBoundingSphere();
+  // might be needed for displaying a texture
+  // geometry.computeFaceNormals();
+  // geometry.computeVertexNormals();
 
   // not affected by lighting
   material = new THREE.MeshBasicMaterial( {
-    color: 0xffffff,
+    color: 0x9E9E9E,
     wireframe: true,
     wireframeLinewidth: 2
   } );
