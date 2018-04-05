@@ -22,7 +22,7 @@ function init() {
   ];
   geometry.faces.push( new THREE.Face3( 0, 1, 2 ) );
   geometry.computeBoundingSphere();
-  // might be needed for displaying a texture
+  // might be needed for displaying textures
   // geometry.computeFaceNormals();
   // geometry.computeVertexNormals();
 
@@ -37,7 +37,7 @@ function init() {
   scene.add( mesh );
 
   renderer = new THREE.WebGLRenderer();
-  // rendering at quarter resolution
+  // rendering at fullscreen quarter resolution
   renderer.setSize( window.innerWidth / 4, window.innerHeight / 4, false );
 
   document.body.appendChild( renderer.domElement );
@@ -60,7 +60,8 @@ function animate() {
 
 'Game Development with Three.js' p. 25 -- 3D shapes
                                  p. 26 -- 2D shapes
-http://threejsplaygnd.brangerbriz.net/gui/ -- custom shape creator
+                                 p. 27 -- custom shapes
+http://threejsplaygnd.brangerbriz.net/gui/ -- GUI custom shape creator
 
 Using lines instead of meshes creates unexpected results:
   geometry = new THREE.IcosahedronGeometry( 200, 2 );
