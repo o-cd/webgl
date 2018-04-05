@@ -1,5 +1,5 @@
 var camera, scene, renderer;
-var geometry, material, mesh;
+var triangle, geometry, material, mesh;
 
 init();
 animate();
@@ -14,17 +14,15 @@ function init() {
 
   scene = new THREE.Scene();
 
-  geometry = new THREE.Geometry();
-  geometry.vertices = [
-      new THREE.Vector3(   0,   0,   0 ),
-      new THREE.Vector3(   0, 100,   0 ),
-      new THREE.Vector3(   0,   0, 100 )
-  ];
-  geometry.faces.push( new THREE.Face3( 0, 1, 2 ) );
-  geometry.computeBoundingSphere();
-  // might be needed for displaying textures
-  // geometry.computeFaceNormals();
-  // geometry.computeVertexNormals();
+  triangle = new THREE.Shape( [
+      new THREE.Vector2(   0, 100 ),
+      new THREE.Vector2( 100, 100 ),
+      new THREE.Vector2( 100,   0 )
+  ] );
+  geometry = new THREE.ExtrudeGeometry( triangle, {
+    bevelEnabled: false,
+    amount: 30
+  } );
 
   // not affected by lighting
   material = new THREE.MeshBasicMaterial( {
