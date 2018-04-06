@@ -45,16 +45,6 @@
 		"oS": 3,
 		"uL": 1
 		},
-	"\/img\/teeth.jpg": {
-		"ft": 16384,
-		"iS": 1522561,
-		"oA": 0,
-		"oAP": "\/img\/teeth.jpg",
-		"oF": 0,
-		"oIPL": 1,
-		"opt": 1,
-		"q": 1
-		},
 	"\/index.haml": {
 		"cB": 0,
 		"cDA": 0,
