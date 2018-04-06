@@ -1,5 +1,5 @@
 var camera, scene, renderer;
-var geometry, material, mesh;
+var geometry, texture, material, mesh;
 
 init();
 animate();
@@ -14,32 +14,9 @@ function init() {
 
   scene = new THREE.Scene();
 
-  // // pyramid
-  // geometry = new THREE.Geometry();
-  // geometry.vertices = [
-  //     new THREE.Vector3(   0,   0, 100 ),
-  //     new THREE.Vector3(  50,  50,   0 ),
-  //     new THREE.Vector3(  50, -50,   0 ),
-  //     new THREE.Vector3( -50, -50,   0 ),
-  //     new THREE.Vector3( -50,  50,   0 )
-  // ];
-  // geometry.faces.push(
-  //     new THREE.Face3( 0, 1, 2 ),
-  //     new THREE.Face3( 0, 2, 3 ),
-  //     new THREE.Face3( 0, 3, 4 ),
-  //     new THREE.Face3( 0, 4, 1 ),
-  //
-  //     new THREE.Face3( 1, 2, 3 ),
-  //     new THREE.Face3( 3, 4, 1 )
-  // );
-  // geometry.computeBoundingSphere();
-  // // might be needed for displaying a texture
-  // geometry.computeFaceNormals();
-  // geometry.computeVertexNormals();
+  geometry = new THREE.CylinderGeometry( 1, 25*3, 25*3, 4 );
 
-
-  geometry = new THREE.TorusGeometry( 150, 75, 8, 6 );
-  var texture = new THREE.TextureLoader().load( '../img/teeth.jpg' );
+  texture = new THREE.TextureLoader().load( 'img/teeth.jpg' );
   // unlit
   material = new THREE.MeshBasicMaterial( {
     map: texture

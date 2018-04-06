@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="613be1d6-7f73-426c-9fcf-ccef0ed45a67" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/config.codekit3" afterPath="$PROJECT_DIR$/config.codekit3" />
+      <change beforePath="$PROJECT_DIR$/img/teeth.jpg" afterPath="$PROJECT_DIR$/img/teeth.jpg" />
       <change beforePath="$PROJECT_DIR$/js/script-min.js" afterPath="$PROJECT_DIR$/js/script-min.js" />
       <change beforePath="$PROJECT_DIR$/js/script.js" afterPath="$PROJECT_DIR$/js/script.js" />
     </list>
@@ -38,8 +40,8 @@
       <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="34" column="38" lean-forward="true" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
+            <state relative-caret-position="0">
+              <caret line="0" column="28" lean-forward="true" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -158,12 +160,12 @@
       <workItem from="1522801051038" duration="5951000" />
       <workItem from="1522892198301" duration="3181000" />
       <workItem from="1522903929953" duration="124000" />
-      <workItem from="1522939449851" duration="7903000" />
+      <workItem from="1522939449851" duration="8813000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27821000" />
+    <option name="totallyTimeSpent" value="28731000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="622" width="858" height="573" extended-state="0" />
@@ -452,8 +454,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="34" column="38" lean-forward="true" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
+        <state relative-caret-position="0">
+          <caret line="0" column="28" lean-forward="true" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
           <folding />
         </state>
       </provider>
