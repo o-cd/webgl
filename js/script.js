@@ -1,5 +1,5 @@
 var camera, scene, renderer;
-var geometry, material, mesh;
+var geometry, texture, material, mesh;
 
 init();
 animate();
@@ -14,34 +14,12 @@ function init() {
 
   scene = new THREE.Scene();
 
-  // pyramid
-  geometry = new THREE.Geometry();
-  geometry.vertices = [
-      new THREE.Vector3(   0,   0, 100 ),
-      new THREE.Vector3(  50,  50,   0 ),
-      new THREE.Vector3(  50, -50,   0 ),
-      new THREE.Vector3( -50, -50,   0 ),
-      new THREE.Vector3( -50,  50,   0 )
-  ];
-  geometry.faces.push(
-      new THREE.Face3( 0, 1, 2 ),
-      new THREE.Face3( 0, 2, 3 ),
-      new THREE.Face3( 0, 3, 4 ),
-      new THREE.Face3( 0, 4, 1 ),
+  geometry = new THREE.CylinderGeometry( 1, 25*3, 25*3, 4 );
 
-      new THREE.Face3( 1, 2, 3 ),
-      new THREE.Face3( 3, 4, 1 )
-  );
-  geometry.computeBoundingSphere();
-  // might be needed for displaying a texture
-  // geometry.computeFaceNormals();
-  // geometry.computeVertexNormals();
-
-  // not affected by lighting
+  texture = new THREE.TextureLoader().load( 'img/teeth.jpg' );
+  // unlit
   material = new THREE.MeshBasicMaterial( {
-    color: 0x9E9E9E,
-    wireframe: true,
-    wireframeLinewidth: 2
+    map: texture
   } );
 
   mesh = new THREE.Mesh( geometry, material );
@@ -72,6 +50,11 @@ function animate() {
 'Game Development with Three.js' p. 25 -- 3D shapes
                                  p. 26 -- 2D shapes
                                  p. 27 -- custom shapes
+
+                                 p. 29 -- fonts geometry
+
+                                 p. 30 -- materials
+
 http://threejsplaygnd.brangerbriz.net/gui/ -- GUI custom shape creator
 
 Using lines instead of meshes creates unexpected results:
