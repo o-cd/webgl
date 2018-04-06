@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="613be1d6-7f73-426c-9fcf-ccef0ed45a67" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/config.codekit3" afterPath="$PROJECT_DIR$/config.codekit3" />
-      <change beforePath="$PROJECT_DIR$/css/styles.css" afterPath="$PROJECT_DIR$/css/styles.css" />
-      <change beforePath="$PROJECT_DIR$/css/styles.sass" afterPath="$PROJECT_DIR$/css/styles.sass" />
-      <change beforePath="$PROJECT_DIR$/index.haml" afterPath="$PROJECT_DIR$/index.haml" />
-      <change beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change beforePath="$PROJECT_DIR$/js/CanvasRenderer-min.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/js/CanvasRenderer.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/js/script-min.js" afterPath="$PROJECT_DIR$/js/script-min.js" />
-      <change beforePath="$PROJECT_DIR$/js/script.js" afterPath="$PROJECT_DIR$/js/script.js" />
-    </list>
+    <list default="true" id="613be1d6-7f73-426c-9fcf-ccef0ed45a67" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -185,7 +174,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37141000" />
+    <option name="totallyTimeSpent" value="37155000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="622" width="858" height="573" extended-state="0" />
