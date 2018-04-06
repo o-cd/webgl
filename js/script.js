@@ -25,7 +25,9 @@ function init() {
   mesh = new THREE.Mesh( geometry, material );
   scene.add( mesh );
 
-  renderer = new THREE.WebGLRenderer();
+  renderer = new THREE.WebGLRenderer({
+    alpha: true
+  });
   // rendering at fullscreen quarter resolution
   renderer.setSize( window.innerWidth / 4, window.innerHeight / 4, false );
 
