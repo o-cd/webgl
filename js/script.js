@@ -37,7 +37,7 @@ function init() {
   geometry.computeFaceNormals();
   geometry.computeVertexNormals();
 
-  var texture = new THREE.TextureLoader().load( 'img/teeth.jpg' );
+  var texture = new THREE.TextureLoader().load( '../img/teeth.jpg' );
   // unlit
   material = new THREE.MeshBasicMaterial( {
     map: texture
