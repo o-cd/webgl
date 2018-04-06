@@ -37,8 +37,8 @@ function animate() {
 
   requestAnimationFrame( animate );
 
-  mesh.rotation.x = Date.now() * 0.0005;
-  mesh.rotation.y = Date.now() * 0.001;
+  mesh.rotation.x = Math.PI;
+  mesh.rotation.y = Date.now() * .001;
 
   // ( object, perspective )
   renderer.render( scene, camera );
