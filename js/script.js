@@ -21,7 +21,7 @@ function init() {
   // material = new THREE.MeshBasicMaterial( {
   //   map: texture
   // } );
-  material = new THREE.MeshPhongMaterial({color: 0xfa4444});
+  material = new THREE.MeshNormalMaterial();
 
   mesh = new THREE.Mesh( geometry, material );
   scene.add( mesh );
