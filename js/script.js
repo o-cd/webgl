@@ -1,66 +1,72 @@
-var camera, scene, renderer;
-var geometry, texture, material, mesh;
+// Procedural City
 
-init();
-animate();
+var scene, camera, renderer,
+    geometry, material,
+    floor, building;
 
-function init() {
+function setup() {
 
-  // ( FOV: degree, Aspect Ratio, Near & Far Clipping Planes )
-  camera = new THREE.PerspectiveCamera(
-      75, window.innerWidth / window.innerHeight, 1, 1000
-  );
-  camera.position.z = 200;
+  setupThreeJS();
+  setupWorld();
+
+  requestAnimationFrame( function animate() {
+    renderer.render( scene, camera );
+
+    requestAnimationFrame( animate );
+  });
+
+}
+
+function setupThreeJS() {
 
   scene = new THREE.Scene();
 
-  geometry = new THREE.CylinderGeometry( 1, 25*3, 25*3, 4 );
+  camera = new THREE.PerspectiveCamera(
+      75, window.innerWidth / window.innerHeight, 1, 10000
+  );
+  camera.position.y = 400;
+  camera.position.z = 400;
+  // tilting camera 45 degrees down
+  camera.rotation.x = -45 * Math.PI / 180;
+  // alternative method: look at default scene origin
+  // camera.lookAt( new THREE.Vector3( 0, 0, 0 ) );
 
-  texture = new THREE.TextureLoader().load( 'img/teeth.jpg' );
-  // unlit
-  material = new THREE.MeshBasicMaterial( {
-    map: texture
-  } );
-
-  mesh = new THREE.Mesh( geometry, material );
-  scene.add( mesh );
-
-  renderer = new THREE.WebGLRenderer();
-  // rendering at fullscreen quarter resolution
+  renderer = new THREE.CanvasRenderer();
   renderer.setSize( window.innerWidth / 4, window.innerHeight / 4, false );
-
   document.body.appendChild( renderer.domElement );
 
 }
 
-function animate() {
+function setupWorld() {
 
-  requestAnimationFrame( animate );
+  // splitting plane into 20 x 20 grid
+  geometry = new THREE.PlaneGeometry( 2000, 2000, 20, 20 );
+  material = new THREE.MeshBasicMaterial({
+    color: 0xFF9E80
+  })
+  floor = new THREE.Mesh( geometry, material );
+  floor.rotation.x = -90 * Math.PI / 180;
+  // laying plane flat
+  scene.add( floor );
 
-  mesh.rotation.x = Math.PI;
-  mesh.rotation.y = Date.now() * .001;
+  geometry = new THREE.CubeGeometry( 1, 1, 1 );
+  // moving origin to bottom by moving all vertices and faces without moving it
+  geometry.applyMatrix( new THREE.Matrix4().makeTranslation( 0, 0.5, 0 ) );
+  material = new THREE.MeshDepthMaterial();
 
-  // ( object, perspective )
-  renderer.render( scene, camera );
+  for ( var i = 0; i < 300; i++ ) {
+    building = new THREE.Mesh( geometry.clone(), material.clone() );
+
+    building.position.x = Math.floor( Math.random() * 200 - 100 ) * 4;
+    building.position.z = Math.floor( Math.random() * 200 - 100 ) * 4;
+
+    building.scale.x = Math.random() * 50 + 10;
+    building.scale.y = Math.random() * building.scale.x * 8 + 8;
+    building.scale.z = building.scale.x;
+
+    scene.add( building );
+  }
 
 }
 
-/*
-
-'Game Development with Three.js' p. 25 -- 3D shapes
-                                 p. 26 -- 2D shapes
-                                 p. 27 -- custom shapes
-
-                                 p. 29 -- fonts geometry
-
-                                 p. 30 -- materials
-
-http://threejsplaygnd.brangerbriz.net/gui/ -- GUI custom shape creator
-
-Using lines instead of meshes creates unexpected results:
-  geometry = new THREE.IcosahedronGeometry( 200, 2 );
-  // | LineDashedMaterial
-  material = new THREE.LineBasicMaterial( { color: 0x000000 } );
-  mesh = new THREE.Line( geometry, material );
-
- */
+setup();
