@@ -6,6 +6,8 @@ var scene, camera, renderer,
 
 function setup() {
 
+  document.body.style.backgroundColor = '#d7f0f7';
+
   setupThreeJS();
   setupWorld();
 
@@ -42,7 +44,8 @@ function setupWorld() {
   // splitting plane into 20 x 20 grid
   geometry = new THREE.PlaneGeometry( 2000, 2000, 20, 20 );
   material = new THREE.MeshBasicMaterial({
-    color: 0xFF9E80
+    color: 0xFF9E80,
+    overdraw: true
   })
   floor = new THREE.Mesh( geometry, material );
   floor.rotation.x = -90 * Math.PI / 180;
@@ -52,7 +55,9 @@ function setupWorld() {
   geometry = new THREE.CubeGeometry( 1, 1, 1 );
   // moving origin to bottom by moving all vertices and faces without moving it
   geometry.applyMatrix( new THREE.Matrix4().makeTranslation( 0, 0.5, 0 ) );
-  material = new THREE.MeshDepthMaterial();
+  material = new THREE.MeshDepthMaterial({
+    overdraw: true
+  });
 
   for ( var i = 0; i < 300; i++ ) {
     building = new THREE.Mesh( geometry.clone(), material.clone() );
