@@ -4,7 +4,7 @@ var scene, camera, renderer,
 
 function init() {
 
-  document.body.style.backgroundColor = '#CFD8DC'; // Blue Grey 100
+  document.body.style.backgroundColor = '#B0BEC5'; // Material Blue Grey 200
 
   scene = new THREE.Scene();
 
@@ -38,7 +38,7 @@ function initWorld() {
   geometry = new THREE.PlaneGeometry( 2000, 2000, 20, 20 );
 
   material = new THREE.MeshBasicMaterial({
-    color: 0xFF6E40 // Deep Orange A200
+    color: 0xFF6E40 // Material Deep Orange A200
   });
 
   plane = new THREE.Mesh( geometry, material );
