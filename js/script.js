@@ -34,14 +34,13 @@ function init() {
   );
   geometry.computeBoundingSphere();
   // might be needed for displaying a texture
-  // geometry.computeFaceNormals();
-  // geometry.computeVertexNormals();
+  geometry.computeFaceNormals();
+  geometry.computeVertexNormals();
 
-  // not affected by lighting
+  var texture = new THREE.TextureLoader().load( 'img/teeth.jpg' );
+  // unlit
   material = new THREE.MeshBasicMaterial( {
-    color: 0x9E9E9E,
-    wireframe: true,
-    wireframeLinewidth: 2
+    map: texture
   } );
 
   mesh = new THREE.Mesh( geometry, material );
@@ -72,6 +71,11 @@ function animate() {
 'Game Development with Three.js' p. 25 -- 3D shapes
                                  p. 26 -- 2D shapes
                                  p. 27 -- custom shapes
+
+                                 p. 29 -- fonts geometry
+
+                                 p. 30 -- materials
+
 http://threejsplaygnd.brangerbriz.net/gui/ -- GUI custom shape creator
 
 Using lines instead of meshes creates unexpected results:
