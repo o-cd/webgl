@@ -55,7 +55,7 @@ function initWorld() {
   // moving origin to bottom by moving all vertices and faces without moving it
   geometry.applyMatrix( new THREE.Matrix4().makeTranslation( 0, .5, 0) );
 
-  material = new THREE.MeshDepthMaterial();
+  material = new THREE.MeshNormalMaterial(); // use Depth Material
 
 
   for ( var i = 0; i < 300; i++ ) {
