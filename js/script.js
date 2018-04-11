@@ -1,26 +1,31 @@
+/*
+
+Procedural City
+
+! Refactor in accordance with official doc.
+! Create global variables for colors
+
+ */
+
 var scene, camera, renderer,
     geometry, material, light,
-    plane, rectangle, rectangles, world;
+    plane, rectangle, rectangles, world,
+
+    colorSky = 'linear-gradient( #90A4AE, #CFD8DC )'; // Mat. Blue Grey 300, 100
 
 function init() {
 
-  document.body.style.backgroundColor = '#B0BEC5'; // Material Blue Grey 200
+  document.body.style.background = colorSky;
 
   scene = new THREE.Scene();
 
   camera = new THREE.PerspectiveCamera(
-      75, window.innerWidth / window.innerHeight, 1, 10000
+      75, window.innerWidth / window.innerHeight, 1, 1000
   );
-  // tilting camera 45 degrees down
-  // alternative; look at default origin:
-  // camera.lookAt( new THREE.Vector3( 0, 0, 0 ) )
-  camera.position.x = -45 * Math.PI / 180;
-  camera.position.y = 400;
-  camera.position.z = 400;
+  camera.position.y = 500;
+  camera.position.z = 500;
 
-  renderer = new THREE.WebGLRenderer({
-    alpha: true
-  });
+  renderer = new THREE.WebGLRenderer({ alpha: true });
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   renderer.setSize( window.innerWidth / 4, window.innerHeight / 4, false );
