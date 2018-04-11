@@ -7,7 +7,7 @@
 		"uuidString": "78B11333-5F5D-4C45-81A9-219928C57927"
 		}
 	],
-"creatorBuild": "26330",
+"creatorBuild": "26680",
 "files": {
 	"\/.gitattributes": {
 		"cB": 0,
@@ -105,7 +105,8 @@
 	"creationDate": 544299227,
 	"displayValue": "webgl",
 	"displayValueWasSetByUser": 0,
-	"iconImageName": "meme-ive"
+	"iconImageName": "meme-ive",
+	"iconImageWasSetByUser": 0
 	},
 "projectSettings": {
 	"abortBuildOnError": 1,
@@ -1908,6 +1909,7 @@
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
 		"autoOutputPathStyle": 0,
+		"outputFormat": 0,
 		"quality": 100
 		},
 	"languageDefaultsJS": {

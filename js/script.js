@@ -1,6 +1,6 @@
 var scene, camera, renderer,
-    geometry, material,
-    plane, rectangle;
+    geometry, material, light,
+    plane, rectangle, rectangles, world;
 
 function init() {
 
@@ -55,11 +55,24 @@ function initWorld() {
   // moving origin to bottom by moving all vertices and faces without moving it
   geometry.applyMatrix( new THREE.Matrix4().makeTranslation( 0, .5, 0) );
 
-  material = new THREE.MeshNormalMaterial(); // use Depth Material
+  material = new THREE.MeshPhongMaterial({
+    color: 0x263238 // Material Blue Grey 900
+  });
+
+  // flows from 'light.position' to 'light.target.position'
+  light = new THREE.DirectionalLight( 0xFF6E40, 1 ); // Material Deep Orange A200
+  light.position.set( 1, 3, 2 );
+  scene.add( light );
+
+  // ( color, density )
+  // density increases with distance
+  // alternative: Fog( color, minimum & maximum visibility distances )
+  scene.fog = new THREE.FogExp2( 0xFF6E40, .002 ); // Material Deep Orange A200
 
 
+  rectangles = new THREE.Geometry();
   for ( var i = 0; i < 300; i++ ) {
-    rectangle = new THREE.Mesh( geometry.clone(), material.clone() );
+    rectangle = new THREE.Mesh( geometry.clone() );
 
     rectangle.position.x = Math.floor( Math.random() * 200 - 100 ) * 4;
     rectangle.position.z = Math.floor( Math.random() * 200 - 100 ) * 4;
@@ -68,8 +81,10 @@ function initWorld() {
     rectangle.scale.y = Math.random() * rectangle.scale.x * 8 + 8;
     rectangle.scale.z = rectangle.scale.x;
 
-    scene.add( rectangle );
+    THREE.GeometryUtils.merge( rectangles, rectangle );
   }
+  world = new THREE.Mesh( rectangles, material );
+  scene.add( world );
 
 }
 
@@ -77,3 +92,10 @@ function initWorld() {
 init();
 initWorld();
 animate();
+
+
+/*
+
+'Game Development with Three.js' p. 38 -- Lighting
+
+ */
