@@ -4,6 +4,7 @@ Procedural City
 
 ! Refactor in accordance with official doc.
 ! Create global variables for colors
+! Check if shadows work
 
  */
 
@@ -12,7 +13,10 @@ var scene, camera, renderer,
     plane, rectangle, rectangles, world,
 
     colorBackground = 'linear-gradient( #90A4AE, #CFD8DC )', // Material Blue Grey 300, 100
-    colorPlane = 0x37474F; // Material Blue Grey 800
+    colorPlane = 0x455A64, // Material Blue Grey 700
+    colorRectangle = 0x536DFE, // Material Indigo A200
+    colorLight = 0xFF6E40, // Material Deep Orange A200
+    fogColor = colorPlane;
 
 function init() {
 
@@ -38,7 +42,7 @@ function animate() {
 
   renderer.render( scene, camera );
 
-  // camera.rotation.y += .01;
+  // camera.rotation.y = Date.now() * .001;
 
   requestAnimationFrame( animate );
 
@@ -57,23 +61,20 @@ function initWorld() {
 
 
   geometry = new THREE.CubeGeometry( 1, 1, 1 );
-  // moving origin to bottom by moving all vertices and faces without moving it
   geometry.applyMatrix( new THREE.Matrix4().makeTranslation( 0, .5, 0) );
 
-  material = new THREE.MeshPhongMaterial({
-    color: 0x263238 // Material Blue Grey 900
-  });
+  material = new THREE.MeshPhongMaterial({ color: colorRectangle });
 
-  // // flows from 'light.position' to 'light.target.position'
-  // light = new THREE.DirectionalLight( 0xFF6E40, 1 ); // Material Deep Orange A200
-  // light.position.set( 1, 3, 2 );
-  // light.castShadow = true;
-  // scene.add( light );
+  // flows from 'light.position' to 'light.target.position'
+  light = new THREE.DirectionalLight( colorLight, 1 );
+  light.position.set( 0, 0, 1 );
+  light.castShadow = true;
+  scene.add( light );
 
-  // // ( color, density )
-  // // density increases with distance
-  // // alternative: Fog( color, minimum & maximum visibility distances )
-  // scene.fog = new THREE.FogExp2( 0xFF6E40, .002 ); // Material Deep Orange A200
+  // ( color, density )
+  // note: density increases with distance
+  // alternative: Fog( color, minimum & maximum visibility distances )
+  scene.fog = new THREE.FogExp2( fogColor, .0025 );
 
 
   rectangles = new THREE.Geometry();
