@@ -11,7 +11,8 @@ var scene, camera, renderer,
     geometry, material, light,
     plane, rectangle, rectangles, world,
 
-    colorBackground = 'linear-gradient( #90A4AE, #CFD8DC )'; // Material Blue Grey 300, 100
+    colorBackground = 'linear-gradient( #90A4AE, #CFD8DC )', // Material Blue Grey 300, 100
+    colorPlane = 0x37474F; // Material Blue Grey 800
 
 function init() {
 
@@ -24,6 +25,7 @@ function init() {
   );
   camera.position.y = 500;
   camera.position.z = 500;
+  camera.rotation.x = -30 * Math.PI / 180;
 
   renderer = new THREE.WebGLRenderer({ alpha: true });
   renderer.shadowMap.enabled = true;
@@ -34,25 +36,21 @@ function init() {
 
 function animate() {
 
-  requestAnimationFrame( function animate() {
-    renderer.render( scene, camera );
+  renderer.render( scene, camera );
 
-    requestAnimationFrame( animate );
-  });
+  // camera.rotation.y += .01;
+
+  requestAnimationFrame( animate );
 
 }
 
 function initWorld() {
 
-  // splitting plane into 20 x 20 grid
-  geometry = new THREE.PlaneGeometry( 2000, 2000, 20, 20 );
+  geometry = new THREE.PlaneGeometry( 2500, 1000 );
 
-  material = new THREE.MeshBasicMaterial({
-    color: 0xFF6E40 // Material Deep Orange A200
-  });
+  material = new THREE.MeshBasicMaterial({ color: colorPlane });
 
   plane = new THREE.Mesh( geometry, material );
-  // laying plane flat by rotating it -90 degrees
   plane.rotation.x = -90 * Math.PI / 180;
   plane.receiveShadow = true;
   scene.add( plane );
@@ -66,16 +64,16 @@ function initWorld() {
     color: 0x263238 // Material Blue Grey 900
   });
 
-  // flows from 'light.position' to 'light.target.position'
-  light = new THREE.DirectionalLight( 0xFF6E40, 1 ); // Material Deep Orange A200
-  light.position.set( 1, 3, 2 );
-  light.castShadow = true;
-  scene.add( light );
+  // // flows from 'light.position' to 'light.target.position'
+  // light = new THREE.DirectionalLight( 0xFF6E40, 1 ); // Material Deep Orange A200
+  // light.position.set( 1, 3, 2 );
+  // light.castShadow = true;
+  // scene.add( light );
 
-  // ( color, density )
-  // density increases with distance
-  // alternative: Fog( color, minimum & maximum visibility distances )
-  scene.fog = new THREE.FogExp2( 0xFF6E40, .002 ); // Material Deep Orange A200
+  // // ( color, density )
+  // // density increases with distance
+  // // alternative: Fog( color, minimum & maximum visibility distances )
+  // scene.fog = new THREE.FogExp2( 0xFF6E40, .002 ); // Material Deep Orange A200
 
 
   rectangles = new THREE.Geometry();
