@@ -21,6 +21,8 @@ function init() {
   renderer = new THREE.WebGLRenderer({
     alpha: true
   });
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   renderer.setSize( window.innerWidth / 4, window.innerHeight / 4, false );
   document.body.appendChild( renderer.domElement );
 
@@ -48,6 +50,7 @@ function initWorld() {
   plane = new THREE.Mesh( geometry, material );
   // laying plane flat by rotating it -90 degrees
   plane.rotation.x = -90 * Math.PI / 180;
+  plane.receiveShadow = true;
   scene.add( plane );
 
 
@@ -62,6 +65,7 @@ function initWorld() {
   // flows from 'light.position' to 'light.target.position'
   light = new THREE.DirectionalLight( 0xFF6E40, 1 ); // Material Deep Orange A200
   light.position.set( 1, 3, 2 );
+  light.castShadow = true;
   scene.add( light );
 
   // ( color, density )
@@ -84,6 +88,8 @@ function initWorld() {
     THREE.GeometryUtils.merge( rectangles, rectangle );
   }
   world = new THREE.Mesh( rectangles, material );
+  world.castShadow = true;
+  world.receiveShadow = true;
   scene.add( world );
 
 }
