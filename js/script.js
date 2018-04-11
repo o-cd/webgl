@@ -6,6 +6,8 @@ Procedural City
 ! Create global variables for colors
 ! Check if shadows work
 
+Last stop: line 82
+
  */
 
 var scene, camera, renderer,
