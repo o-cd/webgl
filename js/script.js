@@ -11,11 +11,11 @@ var scene, camera, renderer,
     geometry, material, light,
     plane, rectangle, rectangles, world,
 
-    colorSky = 'linear-gradient( #90A4AE, #CFD8DC )'; // Mat. Blue Grey 300, 100
+    colorBackground = 'linear-gradient( #90A4AE, #CFD8DC )'; // Material Blue Grey 300, 100
 
 function init() {
 
-  document.body.style.background = colorSky;
+  document.body.style.background = colorBackground;
 
   scene = new THREE.Scene();
 
@@ -27,7 +27,6 @@ function init() {
 
   renderer = new THREE.WebGLRenderer({ alpha: true });
   renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   renderer.setSize( window.innerWidth / 4, window.innerHeight / 4, false );
   document.body.appendChild( renderer.domElement );
 
